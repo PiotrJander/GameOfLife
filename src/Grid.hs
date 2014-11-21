@@ -24,7 +24,7 @@ newState :: Grid -> (Int, Int) -> Cell
 newState old (i,j)
 	| old ! (i,j) == 0 && countAlive == 3         = 1
 	| old ! (i,j) == 1 && countAlive `elem` [2,3] = 1
-	| otherwise									  = 0
+	| otherwise                                   = 0
 	where
 		neighboursCoors = [(i-1, j-1), (i, j-1), (i+1, j-1), (i-1, j),
 						(i+1, j), (i-1, j+1), (i, j+1), (i+1, j+1)]

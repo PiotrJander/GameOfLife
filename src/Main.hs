@@ -23,7 +23,7 @@ life args = do
 		patternName = last args
 		fileName = printf "../patterns/%s.rle" patternName
 	pattern <- fromFile fileName
-	let d = InWindow "Game of Life" (700, 700) (10, 10)
+	let d = InWindow "Game of Life" (1000, 1000) (10, 10)
 	simulate d black stepsPerSec pattern render tick'
 
 available :: IO ()
@@ -35,18 +35,16 @@ available = do
 	mapM_ putStrLn patterns
 
 render :: Grid -> Picture
-render = translate (-200) (-200) . scale 5 5 . pictures . map f . findSquares
+render = translate (-200) (-200) . scale 3 3 . pictures . map f . findSquares
 	where
-		-- f :: Coors -> Picture
-	    f (a,b) = chaoticColor a b $ polygon [(a,b), (a+1, b), (a+1, b+1), (a, b+1)]
-	    -- stockColors :: [Color]
-	    stockColors = [red, green, blue, yellow, cyan, magenta, violet, rose, azure, aquamarine, orange, chartreuse]
-	    -- chaoticColor :: Float -> Float -> Picture -> Picture
-	    chaoticColor i j = color (stockColors !! chaos)
-	    	where chaos = (floor (i * j)) `mod` 12
+		f (a,b) = chaoticColor a b $ polygon [(a,b), (a+1, b), (a+1, b+1), (a, b+1)]
+		stockColors = [makeColor8 255 253 153 200, makeColor8 75 204 0 200, makeColor8 74 153 28 200,
+						makeColor8 96 65 255 200, makeColor8 31 48 204 200]
+		chaoticColor i j = color (stockColors !! chaos)
+			where chaos = (floor (i * j)) `mod` length stockColors
 
 findSquares :: Grid -> [Coors]
-findSquares g = [(fromIntegral x, fromIntegral y)|x <-[1..(nrows g)], y <-[1..(ncols g)], g ! (x,y) == 1]
+findSquares g = [(fromIntegral x, fromIntegral y)|x <-[1..(ncols g)], y <-[1..(nrows g)], g ! (x,y) == 1]
 
 tick' :: ViewPort -> Float -> Grid -> Grid
 tick' _ _  = tick
