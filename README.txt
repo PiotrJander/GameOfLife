@@ -62,4 +62,12 @@ to see a list of supplied patterns.
 
 The program can:
 
-* read pattern data from any RLE file
+* read pattern data from RLE files.
+* animate the evolution of a big system in real time.
+
+It also has, however, some limitations:
+
+* it can't animate very big patterns at a very high fps rate.
+* it can only animate systems which shrink or whose size stays about the same;
+  this is because the grid is represented as a matrix of fixed size.
+  
