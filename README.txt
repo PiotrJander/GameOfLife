@@ -54,7 +54,7 @@ to adjust the view.
 
 You can also type
 
-> Life options
+> Life patterns
 
 to see a list of supplied patterns.
 
@@ -64,6 +64,8 @@ The program can:
 
 * read pattern data from RLE files.
 * animate the evolution of a big system in real time.
+* chaotically colours the grid; each time the program is run, it uses a random
+  palette of colors from the file `palettes'.
 
 It also has, however, some limitations:
 
