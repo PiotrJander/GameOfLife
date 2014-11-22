@@ -14,7 +14,7 @@ type ColorStr = String
 
 main = do
 	args <- getArgs
-	if head args == "options"
+	if head args == "patterns"
 		then listPatterns
 		else life args
 
