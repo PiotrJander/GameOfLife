@@ -27,7 +27,7 @@ life args = do
 		patternName = last args
 		fileName = printf "../patterns/%s.rle" patternName
 		palettes = map (map toColor) . map words . lines $ palettesFile
-		bg = makeColor8 35 35 35 255
+		bg = makeColorI 35 35 35 255
 	colors <- pick palettes
 	pattern <- fromFile fileName
 	let d = InWindow "Game of Life" (1000, 1000) (10, 10)
@@ -37,7 +37,7 @@ toColor :: ColorStr -> (Picture -> Picture)
 toColor = color . makeRGB . map parseHex . chunks
 	where
 		chunks [a,b,c,d,e,f] = [[a,b], [c,d], [e,f]]
-		makeRGB [r,g,b] = makeColor8 r g b 200
+		makeRGB [r,g,b] = makeColorI r g b 200
 
 pick :: [a] -> IO a
 pick xs = randomRIO (0, (length xs - 1)) >>= return . (xs !!)
