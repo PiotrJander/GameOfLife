@@ -1,16 +1,17 @@
-################################################################################
+##########################################################################
 Game of Life
 --------------------------------------
 © Lorenzo Martinico, Piotr Jander 2014
-################################################################################
+##########################################################################
 
-010    The `Game of Life' program,
-001    well,
-111    plays the game of life.
+	010    The `Game of Life' program,
+	001    well,
+	111    plays the game of life.
 
 ![](screenshot.png?raw=true)
 
 Overview
+
 1. Installation.
 2. Usage.
 3. Features.
@@ -22,16 +23,17 @@ Before attempting to compile the program, make sure that the packages
 
 The package has a structure:
 
-\GameOfLife
-	\bin-*
-		...
-	\patterns
-		...
-	\src
-		Grid.hs
-		Main.hs
+	\GameOfLife
+		\bin-*
+			...
+		\patterns
+			...
+		\src
+			Grid.hs
+			Main.hs
 
 Suppose you want to compile the program for Windows. Then
+
 1. Create a folder "bin-win32" in "GameOfLife".
 2. Go to "src".
 3. Run
